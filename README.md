@@ -22,7 +22,7 @@ A version  of Moon Patrol.
 
 ### Initial Design
 
-![initial gui](assets/gui.jpg)
+![initial gui](<Screenshot 2023-11-13 at 5.57.43 PM.png>))
 
 ### Final Design
 
