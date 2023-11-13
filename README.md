@@ -6,13 +6,15 @@
 
 ## Team Members
 
-<< List team member names >>
+Steven Lin
+
+Andrew Zou
 
 ***
 
 ## Project Description
 
-<< Give an overview of your project >>
+A version  of Moon Patrol. 
 
 ***    
 
