@@ -50,4 +50,53 @@ A version  of Moon Patrol.
 
 ## ATP
 
+Test Case 1: Player Movement
+
+Test Description: Verify that the player jumps as expected
+Test Steps:
+Start the game.
+Press the spacebar or up arrow.
+Verify the player jumps upwards and then lands back down.
+Press the down arrow.
+Verify the player ducks
+Expected Outcome: The player should jump up and down or ducks in response to the spacebar or arrow keys.
+
+Test Case 2: Collision Detection and Game Over condition
+
+Test Description: Ensure that collisions between the player and obstacles are detected correctly.
+Test Steps:
+Start the game.
+Play until player touches obstacle. 
+Verify the collison is detected and game ends with game over screen.
+Expected Outcome: When player touches obstacles, the game should end with game over screen.
+
+Test Case 3: Error Handling
+
+Test Description: Verify that the program handles unexpected inputs gracefully.
+Test Steps:
+Start the game.
+Enter invalid characters or inputs during gameplay.
+Verify that the program does not crash and displays appropriate error messages.
+
+Test Case 4: Score
+
+Test Description: The score should be tracked as the game progresses 
+Test Steps:
+Start the game.
+Play game.
+Observe the score counter go up.
+Lose the game.
+Verify score counter ends.
+
+Expected Outcome: Score counter should go up when game is being played and stop when the game is over.
+
+Test Case 5: Play again
+
+Test Description:  Verify the game will restart after game over screen
+Test Steps: 
+Start the game.
+Play until game over screen.
+Press play again.
+Verify the game starts again with new score.
+Expected Outcome: Score resets and game begins again
 
