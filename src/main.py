@@ -1,8 +1,5 @@
 import pygame
 from controller import Controller
-from player import Player
-from obstacles import Obstacles
-
 
 def main():
     #initialize pygame, create instance of controller object, call mainloop through controller
