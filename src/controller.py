@@ -59,7 +59,7 @@ class Controller:
           elif event.key == pygame.K_DOWN:
             self.player.duck()
       #update data
-      self.plagiyer.run()
+      self.player.run()
       self.player.update()
       #redraw
       self.screen.fill("white")
