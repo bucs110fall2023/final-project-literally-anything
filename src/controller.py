@@ -9,8 +9,8 @@ class Controller:
     self.screen = pygame.display.set_mode()
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
-    self.player = Player(50,50)
-    self.state = "Game_start"
+    self.player = Player(50,700)
+    self.state = "Menu"
     
   def mainloop(self):
     running = True
@@ -30,8 +30,17 @@ class Controller:
     #event loop
     while self.state == "Menu":
       for event in pygame.event.get():
-        if event.type == pygame.K_SPACE:
-          self.state = "Game_start"
+        if event.type == pygame.QUIT:
+          pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_SPACE:
+            self.state = "Game_start"
+      
+      font = pygame.font.Font(None, 48)
+      msg = font.render("Click space to begin!", False, "black")
+      self.screen.blit(msg, (50,50))
+      self.player.draw(self.screen)
+      pygame.display.flip()
       #update data
 
       #redraw
@@ -39,18 +48,22 @@ class Controller:
   def gameloop(self):
     #event loop
     while self.state == "Game_start":
+      self.player.is_running == True
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()
           exit()
         elif event.type == pygame.KEYDOWN:
-          if event.key == pygame.K_SPACE or pygame.K_UP:
+          if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
           elif event.key == pygame.K_DOWN:
             self.player.duck()
       #update data
+      self.player.run()
       self.player.update()
       #redraw
+      self.screen.fill("white")
+      self.player.draw(self.screen)
       pygame.display.flip()
     
   def gameoverloop(self):
