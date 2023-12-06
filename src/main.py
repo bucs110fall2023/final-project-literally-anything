@@ -1,15 +1,13 @@
 import pygame
 from controller import Controller
-from player import Player
-from obstacles import Obstacles
-
 
 def main():
-    pygame.init()
-    #Create an instance on your controller object
-    #Call your mainloop
+    #initialize pygame, create instance of controller object, call mainloop through controller
     
-    ###### NOTHING ELSE SHOULD GO IN main(), JUST THE ABOVE 3 LINES OF CODE ######
+    pygame.init()
+    game_controller = Controller()
+    game_controller.mainloop()
+
 
 # https://codefather.tech/blog/if-name-main-python/
 if __name__ == '__main__':
