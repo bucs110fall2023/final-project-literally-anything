@@ -1,6 +1,6 @@
 import pygame
 from player import Player
-from obstacles import Obstacles
+import obstacles
 
 class Controller:
   
