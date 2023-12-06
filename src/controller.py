@@ -47,6 +47,7 @@ class Controller:
       
   def gameloop(self):
     #event loop
+    loop = 0
     while self.state == "Game_start":
       self.player.is_running == True
       for event in pygame.event.get():
@@ -59,7 +60,8 @@ class Controller:
           elif event.key == pygame.K_DOWN:
             self.player.duck()
       #update data
-      self.player.run()
+      self.player.run(loop)
+      loop += 1
       self.player.update()
       #redraw
       self.screen.fill("white")
