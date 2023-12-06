@@ -49,7 +49,8 @@ class Controller:
     #event loop
     loop = 0
     while self.state == "Game_start":
-      self.player.is_running == True
+      self.player.run(loop)
+      loop += 1
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()
@@ -57,11 +58,10 @@ class Controller:
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
+            print("jump")
           elif event.key == pygame.K_DOWN:
             self.player.duck()
       #update data
-      self.player.run(loop)
-      loop += 1
       self.player.update()
       #redraw
       self.screen.fill("white")
