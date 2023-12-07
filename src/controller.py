@@ -9,7 +9,9 @@ class Controller:
     self.screen = pygame.display.set_mode()
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
-    self.player = Player(50,700)
+    x_pos = 50
+    y_pos = 700
+    self.player = Player(x_pos,y_pos)
     self.state = "Menu"
     
   def mainloop(self):
@@ -48,7 +50,14 @@ class Controller:
   def gameloop(self):
     #event loop
     loop = 0
+    duckloop = 0
     while self.state == "Game_start":
+      key = pygame.key.get_pressed()
+      if key[pygame.K_DOWN]:
+        self.player.duck(duckloop)
+        duckloop += 1
+      else:
+        self.player.stand()
       self.player.run(loop)
       loop += 1
       for event in pygame.event.get():
@@ -58,8 +67,7 @@ class Controller:
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
-          elif event.key == pygame.K_DOWN:
-            self.player.duck()
+
       #update data
       self.player.update()
       #redraw
