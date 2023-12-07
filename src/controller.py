@@ -2,16 +2,18 @@ import pygame
 import random
 from player import Player
 from obstacles import Obstacles
+from score import Score
 
 class Controller:
   
   def __init__(self):
     #setup pygame data
-    self.screen = pygame.display.set_mode()
+    self.screen = pygame.display.set_mode((1500,850))
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
     self.player = Player(50,700)
     self.obstacle = Obstacles(50,700, random.randrange(0,2))
+    self.score = Score()
     self.state = "Menu"
     
   def mainloop(self):
@@ -24,7 +26,6 @@ class Controller:
         self.gameloop()
       if self.state == "Game_over":
         self.gameoverloop()
-
   
   ### below are some sample loop states ###
 
@@ -68,6 +69,12 @@ class Controller:
       #redraw
       self.screen.fill("white")
       self.player.draw(self.screen)
+      self.score.update()
+      font = pygame.font.Font(None, 48)
+      msg = font.render("HI " + str(self.score.high_score) + " " + str(self.score.score), False, "black")
+      self.screen.blit(msg, (50,50))
+      self.obstacle.obstacle_select()
+      # self.obstacle.draw(self.screen)
       pygame.display.flip()
     
   def gameoverloop(self):
