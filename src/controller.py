@@ -1,6 +1,7 @@
 import pygame
+import random
 from player import Player
-import obstacles
+from obstacles import Obstacles
 
 class Controller:
   
@@ -10,6 +11,7 @@ class Controller:
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
     self.player = Player(50,700)
+    self.obstacle = Obstacles(50,700, random.randrange(0,2))
     self.state = "Menu"
     
   def mainloop(self):
