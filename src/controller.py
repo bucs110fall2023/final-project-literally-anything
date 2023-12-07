@@ -58,7 +58,6 @@ class Controller:
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
-            print("jump")
           elif event.key == pygame.K_DOWN:
             self.player.duck()
       #update data
