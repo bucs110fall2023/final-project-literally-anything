@@ -10,8 +10,8 @@ class Score:
         return str(self.score)
 
     def update(self):
-        delta_time = self.clock.tick() / 1000 
-        self.score += delta_time
+        delta_time = self.clock.tick()
+        self.score += int(delta_time/10)
         if self.score > self.high_score:
             self.high_score = self.score
         return int(self.score)
