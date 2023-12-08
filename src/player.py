@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         self.is_running = True
         self.rect = self.image.get_rect()
         self.rect.x = self.x - 50
-        self.rect.y = self.y
+        self.rect.y = self.y - 50
         if self.is_running == True:
             if loop_count % 8 == 0 and self.in_air == False and self.is_ducking == False:
                 self.current_image = (self.current_image) % 2
@@ -59,21 +59,18 @@ class Player(pygame.sprite.Sprite):
             self.is_jumping = True      
             self.rect = self.image.get_rect()
             self.rect.x = self.x - 50
-            self.rect.y = self.y
+            self.rect.y = self.y - 50
             self.image = self.jumping
         
     def duck(self, loop):
         if self.is_jumping == False:
             self.is_ducking = True
-            self.rect = self.image.get_rect()
-            self.rect.x = self.x
-            self.rect.y = self.ducky
             if self.is_ducking == True:
                 if loop % 8 == 0:
                     self.current_image = (self.current_image) % 2
                     self.image = self.ducking[self.current_image]
                     self.current_image += 1
-            
+                              
     def stand(self):
         self.is_ducking = False
         
@@ -91,12 +88,14 @@ class Player(pygame.sprite.Sprite):
         if not self.is_jumping and self.y < 700: #also precaution
             self.y += self.jump_height
             self.jump_height += self.gravity
-            self.rect.y = self.y - 50
+            self.rect.y = self.y - 100
         if self.y >= self.groundconstant:
             self.is_jumping = False
             self.in_air = False
             self.y = self.groundconstant
             self.jump_height = 15
+        if self.is_ducking:
+            self.rect.y = self.y + 50
     
     def draw(self, screen):
         if self.is_ducking:

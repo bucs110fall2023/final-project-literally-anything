@@ -61,13 +61,13 @@ class Controller:
     while self.state == "Game_start":
       self.bg.update()
       key = pygame.key.get_pressed()
+      self.player.run(loop)
+      loop += 1
       if key[pygame.K_DOWN]:
         self.player.duck(duckloop)
         duckloop += 1
       else:
         self.player.stand()
-      self.player.run(loop)
-      loop += 1
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()
