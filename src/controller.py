@@ -1,9 +1,9 @@
 import random
 import pygame
-from player import Player
-from obstacles import Obstacles
-from score import Score, Highscore
-from background import Background
+from src.player import Player
+from src.obstacles import Obstacles
+from src.score import Score, Highscore
+from src.background import Background
 
 class Controller:
   
