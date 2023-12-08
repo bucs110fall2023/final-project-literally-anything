@@ -48,6 +48,9 @@ class Controller:
       self.screen.blit(msg, (575, 400))
       self.player.draw(self.screen)
       self.current_high = self.highscore.open_high()
+      y_pos = 720
+      x_pos = 50
+      self.player = Player(x_pos,y_pos)
       pygame.display.flip()
       #update data
 
@@ -87,7 +90,7 @@ class Controller:
       if self.score.score >= self.current_high:
         msg = font.render("HIGHSCORE: " + str(self.score.score) + " SCORE:" + str(self.score.score), False, "black")
       else:
-        msg = font.render("HI " + str(self.current_high) + " " + str(self.score.score), False, "black")
+        msg = font.render("HIGHSCORE " + str(self.current_high) + " SCORE:" + str(self.score.score), False, "black")
       self.screen.blit(msg, (50,50))
       spawn_rate = random.randint(0,100)
       if spawn_rate == 10:
