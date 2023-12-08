@@ -52,7 +52,8 @@ class Player(pygame.sprite.Sprite):
             
         
     def jump(self):
-        """_summary_
+        """
+        Initializes jumping of player by 
         """
         if self.is_ducking == False:
             self.is_jumping = True      
