@@ -70,7 +70,7 @@ class Asteroid(pygame.sprite.Sprite):
         """Updates the location of the asteroids and deletes any off screen
         """
         self.rect.x -= 10
-        if self.rect.x <= -55:
+        if self.rect.x <= -50:
             self.kill()
         # print("updating Asteroid")
 
@@ -101,6 +101,6 @@ class Radar(pygame.sprite.Sprite):
         """updates the location of the radar and deletes any that are off the screen
         """
         self.rect.x -= 5
-        if self.rect.x <= -55:
+        if self.rect.x <= -50:
             self.kill()
         # print("updating radar")
