@@ -49,7 +49,11 @@ class Radar(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("assets/Radar.png"), (150,150))
         self.rect = self.image.get_rect()
+<<<<<<< HEAD
         self.rect.x = x - 50
+=======
+        self.rect.x = x - 10
+>>>>>>> f61c3276a217170464b1e0cda6d77fce2d3f8c1c
         self.x = x
         self.rect.y = y
     def draw(self, screen):
@@ -57,8 +61,14 @@ class Radar(pygame.sprite.Sprite):
             screen.blit(self.image, (self.x, self.rect.y))
         # print("drawing radar")
     def update(self):
+<<<<<<< HEAD
         self.rect.x -= 5
         self.x -= 5
         if self.rect.x <= -100:
+=======
+        self.rect.x += 5
+        self.x -= 5
+        if self.x <= -100:
+>>>>>>> f61c3276a217170464b1e0cda6d77fce2d3f8c1c
             self.kill()
         # print("updating radar")

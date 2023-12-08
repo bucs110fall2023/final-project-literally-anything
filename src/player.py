@@ -42,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         """
         self.is_running = True
         self.rect = self.image.get_rect()
-        self.rect.x = self.x
+        self.rect.x = self.x - 50
         self.rect.y = self.y
         if self.is_running == True:
             if loop_count % 8 == 0 and self.in_air == False and self.is_ducking == False:
@@ -58,7 +58,7 @@ class Player(pygame.sprite.Sprite):
         if self.is_ducking == False:
             self.is_jumping = True      
             self.rect = self.image.get_rect()
-            self.rect.x = self.x
+            self.rect.x = self.x - 50
             self.rect.y = self.y
             self.image = self.jumping
         
@@ -84,12 +84,14 @@ class Player(pygame.sprite.Sprite):
             if self.y > self.max_height:
                 self.y -= self.jump_height
                 self.jump_height -= self.gravity
+                self.rect.y = self.y - 50
             else: #precaution to not pass max_height (not really needed)
                 self.is_jumping = False
                 self.jump_height = 0
         if not self.is_jumping and self.y < 700: #also precaution
             self.y += self.jump_height
             self.jump_height += self.gravity
+            self.rect.y = self.y - 50
         if self.y >= self.groundconstant:
             self.is_jumping = False
             self.in_air = False
