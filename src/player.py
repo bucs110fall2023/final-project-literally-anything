@@ -2,6 +2,13 @@ import pygame
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        """
+        Initializes the player, its position, images, hitbox, and other constants
+
+        Args:
+            x (int): x position of the player 
+            y (int): y poisition of the player
+        """
         super().__init__()
         self.x = x
         self.y = y
@@ -27,6 +34,12 @@ class Player(pygame.sprite.Sprite):
         self.groundconstant = y
         
     def run(self, loop_count):
+        """
+        Controls the running animation of the player by switching between 2 sprites based on loop_count
+
+        Args:
+            loop_count (int): the amount of times that the game loop is ran
+        """
         self.is_running = True
         self.rect = self.image.get_rect()
         self.rect.x = self.x
@@ -39,6 +52,8 @@ class Player(pygame.sprite.Sprite):
             
         
     def jump(self):
+        """_summary_
+        """
         if self.is_ducking == False:
             self.is_jumping = True      
             self.rect = self.image.get_rect()
