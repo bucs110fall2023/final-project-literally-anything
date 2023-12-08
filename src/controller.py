@@ -2,21 +2,25 @@ import random
 import pygame
 from player import Player
 from obstacles import Obstacles
-from score import Score
+from score import Score, Highscore
+from background import Background
 
 class Controller:
   
   def __init__(self):
     #setup pygame data
-    self.screen = pygame.display.set_mode((1500,850))
+    self.screen = pygame.display.set_mode((1470, 956))
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
     x_pos = 50
     y_pos = 700
     self.player = Player(x_pos,y_pos)
+    self.bg = Background(self.screen, self.width, self.height, 0)
     self.obstacle = Obstacles(1500,700)
-    self.score = Score()
+    self.highscore = Highscore()
     self.state = "Menu"
+    self.current_high = self.highscore.open_high()
+    
     
   def mainloop(self):
     running = True
@@ -41,6 +45,7 @@ class Controller:
           if event.key == pygame.K_SPACE:
             self.state = "Game_start"
       
+      self.bg.draw(self.screen)
       font = pygame.font.Font(None, 48)
       msg = font.render("Click space to begin!", False, "black")
       self.screen.blit(msg, (50,50))
@@ -54,7 +59,9 @@ class Controller:
     #event loop
     loop = 0
     duckloop = 0
+    self.score = Score()
     while self.state == "Game_start":
+      self.bg.update()
       key = pygame.key.get_pressed()
       if key[pygame.K_DOWN]:
         self.player.duck(duckloop)
@@ -75,10 +82,14 @@ class Controller:
       self.player.update()
       #redraw
       self.screen.fill("white")
+      self.bg.draw(self.screen)
       self.player.draw(self.screen)
-      self.score.update()
+      self.score.update(self.current_high)
       font = pygame.font.Font(None, 48)
-      msg = font.render("HI " + str(self.score.high_score) + " " + str(self.score.score), False, "black")
+      if self.score.score >= self.current_high:
+        msg = font.render("HI " + str(self.score.score) + " " + str(self.score.score), False, "black")
+      else:
+        msg = font.render("HI " + str(self.current_high) + " " + str(self.score.score), False, "black")
       self.screen.blit(msg, (50,50))
       self.obstacle.obstacle_select(random.randint(0,3))
       self.obstacle.update()
@@ -88,6 +99,8 @@ class Controller:
   def gameoverloop(self):
     #event loop
     while self.state == "Game_over":
+      if self.score.score > self.current_high:
+        self.score.save_high(self.score.score)
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()

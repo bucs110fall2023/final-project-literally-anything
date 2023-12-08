@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.jumping = pygame.image.load("assets/Dino_sprites/DinoJump.png")
         self.running = [pygame.image.load("assets/Dino_sprites/DinoRun1.png"), pygame.image.load("assets/Dino_sprites/DinoRun2.png")]
         self.ducking = [pygame.image.load("assets/Dino_sprites/DinoDuck1.png"), pygame.image.load("assets/Dino_sprites/DinoDuck2.png")]
-        self.image = self.standing
+        self.image = self.jumping
         self.is_running = False
         self.is_jumping = False
         self.is_ducking = False
