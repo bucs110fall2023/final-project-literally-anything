@@ -58,21 +58,21 @@ class Player(pygame.sprite.Sprite):
         if self.is_ducking == False:
             self.is_jumping = True      
             self.rect = self.image.get_rect()
-            self.rect.x = self.x
+            self.rect.x = self.x - 50
             self.rect.y = self.y
             self.image = self.jumping
         
     def duck(self, loop):
         if self.is_jumping == False:
             self.is_ducking = True
+            self.rect = self.image.get_rect()
+            self.rect.x = self.x
+            self.rect.y = self.ducky
             if self.is_ducking == True:
                 if loop % 8 == 0:
                     self.current_image = (self.current_image) % 2
                     self.image = self.ducking[self.current_image]
                     self.current_image += 1
-                    self.rect = self.image.get_rect()
-                    self.rect.x = self.x
-                    self.rect.y = self.ducky - 50
             
     def stand(self):
         self.is_ducking = False
