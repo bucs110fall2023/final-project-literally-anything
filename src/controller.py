@@ -118,6 +118,6 @@ class Controller:
             self.obstacle.obstacle_group.empty()
       font = pygame.font.Font(None, 48)
       msg = font.render("Game Over! Click space to try again!", False, "black")
-      self.screen.blit(msg, (575, 400))
+      self.screen.blit(msg, (450, 400))
       pygame.display.flip()
 
