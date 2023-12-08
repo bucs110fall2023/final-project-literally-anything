@@ -16,7 +16,7 @@ class Controller:
     y_pos = 720
     self.player = Player(x_pos,y_pos)
     self.bg = Background(self.screen, self.width, self.height, 0)
-    self.obstacle = Obstacles(1250,600)
+    self.obstacle = Obstacles(1250,650)
     self.highscore = Highscore()
     self.state = "Menu"
     self.current_high = self.highscore.open_high()
