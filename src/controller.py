@@ -16,7 +16,7 @@ class Controller:
     y_pos = 720
     self.player = Player(x_pos,y_pos)
     self.bg = Background(self.screen, self.width, self.height, 0)
-    self.obstacle = Obstacles(1250,650)
+    self.obstacle = Obstacles(1480,650)
     self.highscore = Highscore()
     self.state = "Menu"
     self.current_high = self.highscore.open_high()
@@ -91,7 +91,9 @@ class Controller:
       else:
         msg = font.render("HI " + str(self.current_high) + " " + str(self.score.score), False, "black")
       self.screen.blit(msg, (50,50))
-      self.obstacle.obstacle_select(random.randint(0,3))
+      spawn_rate = random.randint(0,50)
+      if spawn_rate == 10:
+        self.obstacle.obstacle_select(random.randint(0,3))
       self.obstacle.update()
       self.obstacle.draw(self.screen)
       pygame.display.flip()
