@@ -51,7 +51,7 @@ A version  of Moon Patrol.
 
 Test Case 1: Player Movement
 
-Test Description: Verify that the player jumps as expected
+Test Description: Verify that the player jumps/ducks as expected
 Test Steps:
 Start the game.
 Press the spacebar or up arrow.

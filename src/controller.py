@@ -108,7 +108,7 @@ class Controller:
           pygame.quit()
           exit()
         elif event.type == pygame.K_SPACE:
-          self.state == "Game_start"
+          self.state = "Game_start"
       #update data
 
       #redraw
