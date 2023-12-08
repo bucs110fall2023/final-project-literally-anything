@@ -104,7 +104,7 @@ class Controller:
   def gameoverloop(self):
     #event loop
     while self.state == "Game_over":
-      print("game over")
+      # print("game over")
       
       if self.score.score > self.current_high:
         self.score.save_high(self.score.score)
@@ -115,6 +115,7 @@ class Controller:
         if event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE:
             self.state = "Game_start"
+            self.obstacle.obstacle_group.empty()
       font = pygame.font.Font(None, 48)
       msg = font.render("Click space to try again!", False, "black")
       self.screen.blit(msg, (575, 400))
