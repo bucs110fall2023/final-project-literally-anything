@@ -105,14 +105,20 @@ class Controller:
     #event loop
     while self.state == "Game_over":
       print("game over")
+      
       if self.score.score > self.current_high:
         self.score.save_high(self.score.score)
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()
           exit()
-        elif event.type == pygame.K_SPACE:
-          self.state = "Game_start"
+        if event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_SPACE:
+            self.state = "Game_start"
+      font = pygame.font.Font(None, 48)
+      msg = font.render("Click space to try again!", False, "black")
+      self.screen.blit(msg, (575, 400))
+      pygame.display.flip()
       #update data
 
       #redraw

@@ -16,11 +16,10 @@ class Score:
             self.high_score = self.score
         return int(self.score)
     
-    def save_high(score):
+    def save_high(self, score):
         tracker = open("highscore.txt", "w")
         tracker.write(str(score))
         tracker.close()
-        
     def open_high(self):
         try:
             with open("highscore.txt", "r") as file:
@@ -32,7 +31,7 @@ class Highscore:
     def __init__(self):
         pass
     
-    def save_high(score):
+    def save_high(self, score):
         tracker = open("highscore.txt", "w")
         tracker.write(str(score))
         tracker.close()
