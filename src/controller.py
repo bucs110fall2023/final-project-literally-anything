@@ -1,9 +1,9 @@
 import random
 import pygame
-from player import Player
-from obstacles import Obstacles
-from score import Score, Highscore
-from background import Background
+from src.player import Player
+from src.obstacles import Obstacles
+from src.score import Score, Highscore
+from src.background import Background
 
 class Controller:
   
@@ -16,7 +16,7 @@ class Controller:
     y_pos = 720
     self.player = Player(x_pos,y_pos)
     self.bg = Background(self.screen, self.width, self.height, 0)
-    self.obstacle = Obstacles(1500,700)
+    self.obstacle = Obstacles(1250,650)
     self.highscore = Highscore()
     self.state = "Menu"
     self.current_high = self.highscore.open_high()

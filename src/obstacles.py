@@ -9,16 +9,16 @@ class Obstacles(pygame.sprite.Sprite):
         self.y = y
         self.image = None
         self.obstacle = None
+        self.obstacle_group = pygame.sprite.Group()
 
     def update(self):
-        if self.obstacle:
-            self.obstacle.update()
+        self.obstacle_group.update()
 
     def obstacle_select(self, obstacle_type):
         if obstacle_type == 0:
-            self.obstacle = Asteroid(self.x, self.y)
+            self.obstacle_group.add(Asteroid(self.x, self.y))
         elif obstacle_type == 1:
-            self.obstacle = Radar(self.x, self.y)
+            self.obstacle_group.add(Radar(self.x, self.y))
 
     def draw(self, screen):
         if self.obstacle:
@@ -27,11 +27,11 @@ class Obstacles(pygame.sprite.Sprite):
         elif self.image is not None:
             screen.blit(self.image, (self.x, self.y))
 
-class Asteroid(Obstacles):
+class Asteroid(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__(x,y)
-        asteroid_heights = [800, 850, 900]
-        self.image = pygame.transform.scale(pygame.image.load("assets/Asteroid.png"), (700,700))
+        asteroid_heights = [500, 550, 600]
+        self.image = pygame.transform.scale(pygame.image.load("assets/Asteroid.png"), (150,150))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -41,13 +41,14 @@ class Asteroid(Obstacles):
             screen.blit(self.image, (self.x, self.y))
         print("drawing Ast")
     def update(self):
-        self.rect.x -= 5
+        self.x -= 1
+        self.y = self.rect.centery
         print("updating Asteroid")
 
-class Radar(Obstacles):
+class Radar(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__(x,y)
-        self.image = pygame.transform.scale(pygame.image.load("assets/Radar.png"), (500,500))
+        self.image = pygame.transform.scale(pygame.image.load("assets/Radar.png"), (200,200))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -56,5 +57,5 @@ class Radar(Obstacles):
             screen.blit(self.image, (self.x, self.y))
         print("drawing radar")
     def update(self):
-        self.rect.x -= 5
+        self.x -= 1
         print("updating radar")
