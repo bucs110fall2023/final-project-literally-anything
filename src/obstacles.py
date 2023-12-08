@@ -1,6 +1,5 @@
 import random
 import pygame
-from player import Player
 
 class Obstacles(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -43,10 +42,7 @@ class Asteroid(pygame.sprite.Sprite):
         if self.rect.x <= -100:
             self.kill()
         # print("updating Asteroid")
-        
-    def get_rect(self):
-        self.rect = (self.rect.x, self.rect.y)
-        return self.rect
+
 
 class Radar(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -64,6 +60,3 @@ class Radar(pygame.sprite.Sprite):
         if self.rect.x <= -100:
             self.kill()
         # print("updating radar")
-    def get_rect(self):
-        self.rect = (self.rect.x, self.rect.y)
-        return self.rect

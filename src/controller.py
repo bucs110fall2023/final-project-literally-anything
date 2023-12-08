@@ -20,8 +20,6 @@ class Controller:
     self.highscore = Highscore()
     self.state = "Menu"
     self.current_high = self.highscore.open_high()
-    
-    
   def mainloop(self):
     running = True
     #select state loop
@@ -61,7 +59,6 @@ class Controller:
     duckloop = 0
     self.score = Score()
     while self.state == "Game_start":
-      print(self.player.get_rect())
       self.bg.update()
       key = pygame.key.get_pressed()
       if key[pygame.K_DOWN]:
@@ -78,8 +75,6 @@ class Controller:
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
-      if self.player.get_rect() == (self.obstacle):
-        print("Hit")
 
       #update data
       self.player.update()
@@ -99,11 +94,17 @@ class Controller:
         self.obstacle.obstacle_select(random.randint(0,2))
       self.obstacle.update()
       self.obstacle.draw(self.screen)
+      # print(f'"Obstacle content:"{self.obstacle.obstacle_group}')
+      collisions = pygame.sprite.spritecollide(self.player, self.obstacle.obstacle_group, False)
+      if collisions:
+        self.state = "Game_over"
+        print("collision detected")
       pygame.display.flip()
     
   def gameoverloop(self):
     #event loop
     while self.state == "Game_over":
+      print("game over")
       if self.score.score > self.current_high:
         self.score.save_high(self.score.score)
       for event in pygame.event.get():

@@ -102,7 +102,4 @@ class Player(pygame.sprite.Sprite):
         else:
             screen.blit(self.image, (self.x, self.y))
             
-    def get_rect(self):
-        self.rect = (self.rect.x, self.rect.y)
-        return self.rect
         
