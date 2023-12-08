@@ -30,8 +30,8 @@ class Obstacles(pygame.sprite.Sprite):
 class Asteroid(Obstacles):
     def __init__(self, x, y):
         super().__init__(x,y)
-        asteroid_heights = [800, 850, 900]
-        self.image = pygame.transform.scale(pygame.image.load("assets/Asteroid.png"), (700,700))
+        asteroid_heights = [450, 500, 600]
+        self.image = pygame.transform.scale(pygame.image.load("assets/Asteroid.png"), (200,200))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -47,7 +47,7 @@ class Asteroid(Obstacles):
 class Radar(Obstacles):
     def __init__(self, x, y):
         super().__init__(x,y)
-        self.image = pygame.transform.scale(pygame.image.load("assets/Radar.png"), (500,500))
+        self.image = pygame.transform.scale(pygame.image.load("assets/Radar.png"), (250,250))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
