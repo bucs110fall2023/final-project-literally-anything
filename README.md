@@ -22,11 +22,11 @@ A version  of Moon Patrol.
 
 ### Initial Design
 
-![initial gui](<Screenshot 2023-11-13 at 5.57.43 PM.png>)
+![<Screenshot 2023-11-13 at 5.57.43 PM.png>](assets/gui.jpg)
 
 ### Final Design
 
-![final gui](assets/finalgui.jpg)
+![assets/finalgui.jpg](<assets/Screenshot 2023-12-08 at 2.33.39 PM.png>)
 
 ## Program Design
 

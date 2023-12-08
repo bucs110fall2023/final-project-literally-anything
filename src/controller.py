@@ -6,7 +6,6 @@ from src.score import Score, Highscore
 from src.background import Background
 
 class Controller:
-  
   def __init__(self):
     #setup pygame data
     self.screen = pygame.display.set_mode((1470, 956))
@@ -48,6 +47,7 @@ class Controller:
       msg = font.render("Click space to begin!", False, "black")
       self.screen.blit(msg, (575, 400))
       self.player.draw(self.screen)
+      self.current_high = self.highscore.open_high()
       pygame.display.flip()
       #update data
 
@@ -114,12 +114,10 @@ class Controller:
           exit()
         if event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE:
-            self.state = "Game_start"
+            self.state = "Menu"
             self.obstacle.obstacle_group.empty()
       font = pygame.font.Font(None, 48)
       msg = font.render("Click space to try again!", False, "black")
       self.screen.blit(msg, (575, 400))
       pygame.display.flip()
-      #update data
 
-      #redraw
