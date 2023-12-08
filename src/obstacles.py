@@ -19,7 +19,7 @@ class Obstacles(pygame.sprite.Sprite):
             self.obstacle_group.add(Asteroid(self.x, self.y))
         elif obstacle_type == 1:
             self.obstacle_group.add(Radar(self.x, self.y))
-        print(f'"number of sprites"{len(self.obstacle_group.sprites())}')
+        #print(f'"number of sprites"{len(self.obstacle_group.sprites())}')
 
     def draw(self, screen):
         for i in self.obstacle_group:

@@ -61,6 +61,7 @@ class Controller:
     duckloop = 0
     self.score = Score()
     while self.state == "Game_start":
+      print(self.player.get_rect())
       self.bg.update()
       key = pygame.key.get_pressed()
       if key[pygame.K_DOWN]:
@@ -77,6 +78,8 @@ class Controller:
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
+      if self.player.get_rect() == (self.obstacle):
+        print("Hit")
 
       #update data
       self.player.update()
