@@ -13,7 +13,7 @@ class Controller:
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
     x_pos = 50
-    y_pos = 700
+    y_pos = 720
     self.player = Player(x_pos,y_pos)
     self.bg = Background(self.screen, self.width, self.height, 0)
     self.obstacle = Obstacles(1500,700)
@@ -48,7 +48,7 @@ class Controller:
       self.bg.draw(self.screen)
       font = pygame.font.Font(None, 48)
       msg = font.render("Click space to begin!", False, "black")
-      self.screen.blit(msg, (50,50))
+      self.screen.blit(msg, (575, 400))
       self.player.draw(self.screen)
       pygame.display.flip()
       #update data
@@ -87,7 +87,7 @@ class Controller:
       self.score.update(self.current_high)
       font = pygame.font.Font(None, 48)
       if self.score.score >= self.current_high:
-        msg = font.render("HI " + str(self.score.score) + " " + str(self.score.score), False, "black")
+        msg = font.render("HIGHSCORE: " + str(self.score.score) + " SCORE:" + str(self.score.score), False, "black")
       else:
         msg = font.render("HI " + str(self.current_high) + " " + str(self.score.score), False, "black")
       self.screen.blit(msg, (50,50))

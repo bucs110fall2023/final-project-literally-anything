@@ -40,7 +40,6 @@ A version  of Moon Patrol.
 
 ### Classes
 
-- << You should have a list of each of your classes with a description >>
 1. Main class managing properties of the main game  
 2. Controller class to handle game states and interactions
 3. Player class containing properties of the player and player movement 
