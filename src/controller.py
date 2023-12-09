@@ -101,6 +101,8 @@ class Controller:
       collisions = pygame.sprite.spritecollide(self.player, self.obstacle.obstacle_group, False)
       if collisions:
         self.state = "Game_over"
+        print(self.player.rect)
+        print(self.obstacle.obstacle_group)
         #print("collision detected")
       pygame.display.flip()
     

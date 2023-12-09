@@ -51,12 +51,12 @@ class Asteroid(pygame.sprite.Sprite):
             y (int): initial y potion
         """
         super().__init__()
-        asteroid_heights = [500, 685, 690, 700, 750]
+        asteroid_heights = [685, 690, 700, 750]
         self.image = pygame.transform.scale(pygame.image.load("assets/Asteroid.png"), (130,130))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.rect.centery = asteroid_heights[random.randrange(0,5)]
+        self.rect.centery = asteroid_heights[random.randrange(0,4)]
     def draw(self, screen):
         """draws the asteroids
 
@@ -69,7 +69,7 @@ class Asteroid(pygame.sprite.Sprite):
     def update(self):
         """Updates the location of the asteroids and deletes any off screen
         """
-        self.rect.x -= 10
+        self.rect.x -= 8
         if self.rect.x <= -50:
             self.kill()
         # print("updating Asteroid")
@@ -100,7 +100,7 @@ class Radar(pygame.sprite.Sprite):
     def update(self):
         """updates the location of the radar and deletes any that are off the screen
         """
-        self.rect.x -= 5
+        self.rect.x -= 7
         if self.rect.x <= -50:
             self.kill()
         # print("updating radar")

@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         self.is_running = True
         self.rect = self.image.get_rect()
         self.rect.x = self.x - 50
-        self.rect.y = self.y - 50
+        self.rect.y = self.y 
         if self.is_running == True:
             if loop_count % 8 == 0 and self.in_air == False and self.is_ducking == False:
                 self.current_image = (self.current_image) % 2
@@ -56,11 +56,11 @@ class Player(pygame.sprite.Sprite):
         Initializes jumping of player by 
         """
         if self.is_ducking == False:
-            self.is_jumping = True      
+            self.is_jumping = True 
+            self.image = self.jumping     
             self.rect = self.image.get_rect()
             self.rect.x = self.x - 50
-            self.rect.y = self.y - 50
-            self.image = self.jumping
+            self.rect.y = self.y
         
     def duck(self, loop):
         if self.is_jumping == False:
@@ -81,7 +81,6 @@ class Player(pygame.sprite.Sprite):
             if self.y > self.max_height:
                 self.y -= self.jump_height
                 self.jump_height -= self.gravity
-                self.rect.y = self.y - 50
             else: #precaution to not pass max_height (not really needed)
                 self.is_jumping = False
                 self.jump_height = 0
@@ -96,6 +95,8 @@ class Player(pygame.sprite.Sprite):
             self.jump_height = 15
         if self.is_ducking:
             self.rect.y = self.y + 50
+        if not self.is_ducking:
+            self.rect = self.image.get_rect(topleft=(self.x - 30 , self.y - 50))
     
     def draw(self, screen):
         if self.is_ducking:

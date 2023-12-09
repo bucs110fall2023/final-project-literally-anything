@@ -7,7 +7,7 @@ class Background:
         self.width = width 
         self.height = height
         self.bg_stretch = 1000
-        self.background_speed = 5
+        self.background_speed = 7
         self.image = pygame.image.load("assets/spacebg.jpeg")
         self.image = pygame.transform.scale(self.image, (self.width + self.bg_stretch, self.height))
         screen.blit(self.image, (0,0))
