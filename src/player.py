@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
         
     def jump(self):
         """
-        Initializes jumping of player by 
+        Initializes jumping of player // switches image of player and hitbox
         """
         if self.is_ducking == False:
             self.is_jumping = True 
@@ -63,6 +63,12 @@ class Player(pygame.sprite.Sprite):
             self.rect.y = self.y
         
     def duck(self, loop):
+        """
+        Handles the logic of ducking and animating sprite running while ducking
+
+        Args:
+            loop (int): used to track amount of times gameloop is ran for ducking animation
+        """
         if self.is_jumping == False:
             self.is_ducking = True
             if self.is_ducking == True:
@@ -72,10 +78,16 @@ class Player(pygame.sprite.Sprite):
                     self.current_image += 1
 
     def stand(self):
+        """
+        Used to overide sprite ducking
+        """
         self.is_ducking = False
         
         
     def update(self):
+        """
+        Handles jumping logic and hitboxes
+        """
         if self.is_jumping == True:
             self.in_air = True
             if self.y > self.max_height:
@@ -99,6 +111,12 @@ class Player(pygame.sprite.Sprite):
             self.rect = self.image.get_rect(topleft=(self.x - 30 , self.y - 50))
     
     def draw(self, screen):
+        """
+        Blits the player sprite onto the screen based on whether it is ducking or not
+
+        Args:
+            screen (Surface): surface of the game 
+        """
         if self.is_ducking:
             screen.blit(self.image, (self.x, self.ducky))
         else:

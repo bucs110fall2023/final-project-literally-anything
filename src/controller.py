@@ -7,7 +7,8 @@ from src.background import Background
 
 class Controller:
   def __init__(self):
-    """Controller
+    """
+    Initializes controller // calls Player, Obstacles, Score, Highscore and Background classes // sets highscore 
     """
     self.screen = pygame.display.set_mode((1470, 956))
     self.screen.fill("white")
@@ -21,7 +22,8 @@ class Controller:
     self.state = "Menu"
     self.current_high = self.highscore.open_high()
   def mainloop(self):
-    """Determines the states and runs the loops
+    """
+    The main loop driver calls different loops based on state of program
     """
     running = True
     while running == True:
@@ -34,7 +36,8 @@ class Controller:
   
 
   def menuloop(self):
-    """The menu of the game
+    """
+    The menuloop of the program // displays start screen // looks for events to either quit or start game
     """
     while self.state == "Menu":
       for event in pygame.event.get():
@@ -56,7 +59,8 @@ class Controller:
       pygame.display.flip()
       
   def gameloop(self):
-    """The main game itself
+    """
+    The main game itself //  different events and loops called based on key presses or events
     """
     loop = 0
     duckloop = 0
@@ -104,7 +108,8 @@ class Controller:
       pygame.display.flip()
     
   def gameoverloop(self):
-    """The game over screen
+    """
+    The game over screen // prompts user to play again with a key press
     """
     while self.state == "Game_over":
       # print("game over")
