@@ -38,14 +38,59 @@ A version  of Moon Patrol.
 4. scrolling background
 5. game over screen
 
+### Data Permanence Feature 
+High score
+
 ### Classes
 
-1. Main class managing properties of the main game  
-2. Controller class to handle game states and interactions
-3. Player class containing properties of the player and player movement 
-4. Obstacles class containing properties of obstacles 
-5. Score class to manage score 
+Background: creates a scrolling background (screen, width, height, x)  
+- init: creates the background
+- update: updates the background every frame
+- draw: draws the updated background  
 
+Controller: The controller (no parameters)
+- init: creates the values for the controller
+- mainlooop: determines the states of the game
+- menuloop: the menu screen
+- gameloop: the main game
+- gameoverloop: the game over screen  
+
+Player: creates the player sprite (pygame.sprite.Sprite)
+- init: creates the player dinosaur
+- run: the running animation
+- jump: the jumping animation
+- duck: the ducking animation
+- stand: the standing animation
+- update: updates the player 
+- draw: draws the new updated player  
+
+Obstacles: The main obstacles
+- init: creates the obstacles
+- update: updates the location of obstacles
+- obstacle_select: selects between Asteroid and Radar classes
+- draw: draws the updated obstacle  
+
+Asteroid: The asteroid obstacle
+- init: creates the asteroid obstacles
+- update: updates the asteroid obstacle location
+- draw: draws the updated asteroid
+
+Radar: The radar obstacle
+- init: creates the radar obstacle
+- update: updates the radar obstacle location
+- draw: draws the updated radar
+
+Score: Creates the score counter
+- init: creates a score
+- str: returns the score as a string
+- update: updates the current score
+- save_high: saves the high score
+- open_high: opens the previous high score
+
+Highscore: Keeps track of high score
+- init: passed
+- save_high: saves the high score
+- open_high: opens the previous high score
 
 ## ATP
 

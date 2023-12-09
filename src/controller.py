@@ -21,7 +21,7 @@ class Controller:
     self.state = "Menu"
     self.current_high = self.highscore.open_high()
   def mainloop(self):
-    """The main loop driver
+    """Determines the states and runs the loops
     """
     running = True
     while running == True:
