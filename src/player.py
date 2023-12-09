@@ -70,7 +70,7 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = (self.current_image) % 2
                     self.image = self.ducking[self.current_image]
                     self.current_image += 1
-                              
+
     def stand(self):
         self.is_ducking = False
         
