@@ -9,7 +9,6 @@ class Obstacles(pygame.sprite.Sprite):
             x (int): initial x value of obstacles
             y (int): initial y value of obstacles
         """
-        # super().__init__()
         self.x = x
         self.y = y
         self.image = None
@@ -31,7 +30,6 @@ class Obstacles(pygame.sprite.Sprite):
             self.obstacle_group.add(Asteroid(self.x, self.y))
         elif obstacle_type == 1:
             self.obstacle_group.add(Radar(self.x, self.y))
-        # print(f'"number of sprites"{len(self.obstacle_group.sprites())}')
 
     def draw(self, screen):
         """draws the obstacles
@@ -65,15 +63,14 @@ class Asteroid(pygame.sprite.Sprite):
         """
         if self.image is not None:
             screen.blit(self.image, (self.rect.x, self.rect.y))
-        # print("drawing Ast")
+
     def update(self):
         """Updates the location of the asteroids and deletes any off screen
         """
         self.rect.x -= 8
         if self.rect.x <= -50:
             self.kill()
-        # print("updating Asteroid")
-
+            
 
 class Radar(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -96,11 +93,11 @@ class Radar(pygame.sprite.Sprite):
         """
         if self.image is not None:
             screen.blit(self.image, (self.rect.x, self.rect.y))
-        # print("drawing radar")
+        
     def update(self):
         """updates the location of the radar and deletes any that are off the screen
         """
         self.rect.x -= 7
         if self.rect.x <= -50:
             self.kill()
-        # print("updating radar")
+        

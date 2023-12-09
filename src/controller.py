@@ -7,7 +7,9 @@ from src.background import Background
 
 class Controller:
   def __init__(self):
-    #setup pygame data
+    """
+    Initializes controller // calls Player, Obstacles, Score, Highscore and Background classes // sets highscore 
+    """
     self.screen = pygame.display.set_mode((1470, 956))
     self.screen.fill("white")
     self.width, self.height = pygame.display.get_window_size()
@@ -20,8 +22,10 @@ class Controller:
     self.state = "Menu"
     self.current_high = self.highscore.open_high()
   def mainloop(self):
+    """
+    The main loop driver calls different loops based on state of program
+    """
     running = True
-    #select state loop
     while running == True:
       if self.state == "Menu":
         self.menuloop()
@@ -30,10 +34,11 @@ class Controller:
       if self.state == "Game_over":
         self.gameoverloop()
   
-  ### below are some sample loop states ###
 
   def menuloop(self):
-    #event loop
+    """
+    The menuloop of the program // displays start screen // looks for events to either quit or start game
+    """
     while self.state == "Menu":
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -52,12 +57,11 @@ class Controller:
       x_pos = 50
       self.player = Player(x_pos,y_pos)
       pygame.display.flip()
-      #update data
-
-      #redraw
       
   def gameloop(self):
-    #event loop
+    """
+    The main game itself //  different events and loops called based on key presses or events
+    """
     loop = 0
     duckloop = 0
     self.score = Score()
@@ -78,14 +82,11 @@ class Controller:
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
             self.player.jump()
-
-      #update data
       self.player.update()
-      #redraw
       self.screen.fill("white")
+      self.score.update(self.current_high)
       self.bg.draw(self.screen)
       self.player.draw(self.screen)
-      self.score.update(self.current_high)
       font = pygame.font.Font(None, 48)
       if self.score.score >= self.current_high:
         msg = font.render("HIGHSCORE: " + str(self.score.score) + " SCORE:" + str(self.score.score), False, "black")
@@ -107,7 +108,9 @@ class Controller:
       pygame.display.flip()
     
   def gameoverloop(self):
-    #event loop
+    """
+    The game over screen // prompts user to play again with a key press
+    """
     while self.state == "Game_over":
       # print("game over")
       
@@ -125,4 +128,3 @@ class Controller:
       msg = font.render("Game Over! Click space to try again!", False, "black")
       self.screen.blit(msg, (450, 400))
       pygame.display.flip()
-
